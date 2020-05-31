@@ -2,13 +2,18 @@
 //  NewsListTableViewController.m
 //  RSS Reader
 //
-//  Created by Stefan Stevanovic on 30/05/2020.
+//  Created by Vladan Randjelovic on 30/05/2020.
 //  Copyright © 2020 Vladan Randjelovic. All rights reserved.
 //
 
 #import "NewsListTableViewController.h"
 
-@interface NewsListTableViewController ()
+@interface NewsListTableViewController () {
+    NSXMLParser *parser;
+    NSMutableArray *news;
+    NSMutableDictionary *newsItem;
+    
+}
 
 @end
 
@@ -27,12 +32,10 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Incomplete implementation, return the number of sections
     return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete implementation, return the number of rows
     return 0;
 }
 

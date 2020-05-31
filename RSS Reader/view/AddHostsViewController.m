@@ -2,7 +2,7 @@
 //  AddHostsViewController.m
 //  RSS Reader
 //
-//  Created by Stefan Stevanovic on 30/05/2020.
+//  Created by Vladan Randjelovic on 30/05/2020.
 //  Copyright © 2020 Vladan Randjelovic. All rights reserved.
 //
 
@@ -29,4 +29,6 @@
 }
 */
 
+- (IBAction)saveHost:(id)sender {
+}
 @end
