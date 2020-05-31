@@ -7,11 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
-
+#import "Host.h"
 @interface NewsListTableViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate, NSXMLParserDelegate>
+
+@property(nonatomic, strong) Host *newsHost;
+    
+
+@property (strong, nonatomic) IBOutlet UITableView *rssFeed;
 
 @end
 
-NS_ASSUME_NONNULL_END

@@ -7,6 +7,7 @@
 //
 
 #import "AddHostsViewController.h"
+#import "NewsListTableViewController.h"
 
 @interface AddHostsViewController ()
 
@@ -35,20 +36,39 @@
 */
 
 - (IBAction)saveHost:(id)sender {
+    NSDate *today = [NSDate date];
+       NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+       [dateFormat setDateFormat:@"dd.MM.yyyy"];
+       NSString *dateString = [dateFormat stringFromDate:today];
     
     if ([self checkTextfields]) {
-         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-           [host setHostName:self.hostNameTF.text];
-           [host setHostURL:self.hostURLTF.text];
-           
-           NSData *hostData = [NSKeyedArchiver archivedDataWithRootObject:host requiringSecureCoding:NO error:nil];
-           [userDefaults setObject:hostData forKey:@"host"];
-           [userDefaults synchronize];
+        NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+        [host setHostName:self.hostNameTF.text];
+        [host setHostURL:self.hostURLTF.text];
+        [host setDateAdded:dateString];
+
+        NSData *hostData = [NSKeyedArchiver archivedDataWithRootObject:host requiringSecureCoding:NO error:nil];
+        [userDefaults setObject:hostData forKey:@"host"];
+        [userDefaults synchronize];
     }
+    [self performSegueWithIdentifier:@"goToFeed" sender:self];
+//    NewsListTableViewController *newsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newsFeed"];
+//    [self.navigationController pushViewController:newsViewController animated:NO];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    if ([segue.identifier isEqualToString:@"goToFeed"]) {
+        NewsListTableViewController * newsVC = segue.destinationViewController;
+        // This is how you will pass the object or data you want for the next view
+        newsVC.newsHost = host;
+    }
+
 }
 
 -(BOOL)checkTextfields {
     NSURL *validationURL = [NSURL URLWithString:self.hostURLTF.text];
+   
     if ([self.hostNameTF.text isEqual:NULL] || [self.hostNameTF.text isEqualToString:@""]) {
         
         [self.hostNameTF setPlaceholder:@"This field can't be empty!"];
@@ -65,5 +85,6 @@
         return YES;
     }
 }
+
 
 @end

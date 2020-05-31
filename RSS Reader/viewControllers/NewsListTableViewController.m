@@ -9,19 +9,31 @@
 #import "NewsListTableViewController.h"
 
 @interface NewsListTableViewController () {
+    
     NSXMLParser *parser;
     NSMutableArray *news;
     NSMutableDictionary *newsItem;
-    
+    NSMutableString *newsTitle;
+    NSMutableString *newsLink;
+    NSString *element;
+
 }
 
 @end
 
 @implementation NewsListTableViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    news = [[NSMutableArray alloc] init];
+    NSURL *hostURl = [NSURL URLWithString:_newsHost.hostURL];
+    
+    parser = [[NSXMLParser alloc] initWithContentsOfURL:hostURl];
+    [parser setDelegate:self];
+    [parser setShouldResolveExternalEntities:NO];
+    [parser parse];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -32,65 +44,60 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 0;
+    return news.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell" forIndexPath:indexPath];
+//    if (cell.textLabel.tag == 0) {
+        cell.textLabel.text = [[news objectAtIndex:indexPath.row] objectForKey:@"title"];
+//    }
+//    if (cell.textLabel.tag == 1) {
+//        cell.textLabel.text = [[news objectAtIndex:indexPath.row] objectForKey:@"description"];
+//    }
+        
     return cell;
 }
-*/
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+-(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary<NSString *,NSString *> *)attributeDict {
+    
+    element = elementName;
+    if ([elementName isEqualToString:@"item"]) {
+        newsItem = [[NSMutableDictionary alloc] init];
+        newsTitle = [[NSMutableString alloc] init];
+        newsLink = [[NSMutableString alloc] init];
+    }
+    
+    
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+-(void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
+    
+    if ([elementName isEqualToString:@"item"]) {
+        [newsItem setObject:newsTitle forKey:@"title"];
+        [newsItem setObject:newsLink forKey:@"link"];
+        
+        [news addObject:[newsItem copy]];
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
+
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
+    if ([element isEqualToString:@"title"]) {
+        [newsTitle appendString:string];
+    } else if ([element isEqualToString:@"link"]) {
+        [newsLink appendString:string];
+    }
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
+- (void)parserDidEndDocument:(NSXMLParser *)parser {
+
+    [self.rssFeed reloadData];
 }
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
