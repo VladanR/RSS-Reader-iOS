@@ -76,8 +76,7 @@
 		6D92F1622482CDAE00C23EB8 /* RSS Reader */ = {
 			isa = PBXGroup;
 			children = (
-				6D92F17E2482D55A00C23EB8 /* presenter */,
-				6D92F17D2482D54800C23EB8 /* view */,
+				6D92F17D2482D54800C23EB8 /* viewControllers */,
 				6D92F17C2482D53400C23EB8 /* model */,
 				6D92F1632482CDAE00C23EB8 /* AppDelegate.h */,
 				6D92F1642482CDAE00C23EB8 /* AppDelegate.m */,
@@ -103,7 +102,7 @@
 			path = model;
 			sourceTree = "<group>";
 		};
-		6D92F17D2482D54800C23EB8 /* view */ = {
+		6D92F17D2482D54800C23EB8 /* viewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				6D92F1692482CDAE00C23EB8 /* MainViewController.h */,
@@ -115,14 +114,7 @@
 				6D92F18524830DBA00C23EB8 /* NewsDetailsViewController.h */,
 				6D92F18624830DBA00C23EB8 /* NewsDetailsViewController.m */,
 			);
-			path = view;
-			sourceTree = "<group>";
-		};
-		6D92F17E2482D55A00C23EB8 /* presenter */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = presenter;
+			path = viewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

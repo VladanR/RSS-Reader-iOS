@@ -9,10 +9,11 @@
 #import <Foundation/Foundation.h>
 
 
-@interface Host : NSObject
+@interface Host : NSObject <NSCoding>
     
 @property (nonatomic, strong) NSString *hostName;
 @property (nonatomic, strong) NSString *dateAdded;
+@property (nonatomic, strong) NSString *hostURL;
 
 
 @end

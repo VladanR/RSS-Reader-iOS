@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Host.h"
 
-@interface MainViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate> {
+@interface MainViewController : UIViewController <UITableViewDataSource,UITableViewDelegate> {
     
     NSMutableArray<Host*> *hosts;
 }

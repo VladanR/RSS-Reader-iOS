@@ -7,17 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
-NS_ASSUME_NONNULL_BEGIN
+#import "Host.h"
 
 @interface AddHostsViewController : UIViewController
 
-
+@property (nonatomic) Host *host;
 @property (weak, nonatomic) IBOutlet UITextField *hostNameTF;
 @property (weak, nonatomic) IBOutlet UITextField *hostURLTF;
 
 - (IBAction)saveHost:(id)sender;
 
 @end
-
-NS_ASSUME_NONNULL_END

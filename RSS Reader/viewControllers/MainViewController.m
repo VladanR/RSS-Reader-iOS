@@ -14,9 +14,19 @@
 
 @implementation MainViewController
 
+NSUserDefaults *userDef;
+Host *host;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    userDef = [NSUserDefaults standardUserDefaults];
+    NSData *hostData = [userDef objectForKey:@"host"];
+    host = [NSKeyedUnarchiver unarchivedObjectOfClass:Host.class fromData:hostData error:nil];
     hosts = [NSMutableArray array];
+    if (host) {
+        [hosts addObject:host];
+    }
+    
     if (hosts != nil && hosts.count > 0) {
         [_hostTable setHidden:NO];
     }
@@ -26,10 +36,6 @@
 
 - (IBAction)goToFeeds:(id)sender {
 }
-
-//- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-//
-//}
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section { 
     return hosts.count;
