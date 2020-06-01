@@ -19,6 +19,7 @@
 		6D92F18724830DBA00C23EB8 /* NewsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92F18624830DBA00C23EB8 /* NewsDetailsViewController.m */; };
 		6D92F18A2483BEA300C23EB8 /* Host.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92F1892483BEA300C23EB8 /* Host.m */; };
 		6D92F18D2483C8DB00C23EB8 /* RSSEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92F18C2483C8DB00C23EB8 /* RSSEntry.m */; };
+		6D92F1912484572D00C23EB8 /* HostAndNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92F1902484572D00C23EB8 /* HostAndNewsCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,8 @@
 		6D92F1892483BEA300C23EB8 /* Host.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Host.m; sourceTree = "<group>"; };
 		6D92F18B2483C8DB00C23EB8 /* RSSEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSEntry.h; sourceTree = "<group>"; };
 		6D92F18C2483C8DB00C23EB8 /* RSSEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSEntry.m; sourceTree = "<group>"; };
+		6D92F18F2484572D00C23EB8 /* HostAndNewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HostAndNewsCell.h; sourceTree = "<group>"; };
+		6D92F1902484572D00C23EB8 /* HostAndNewsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HostAndNewsCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,7 @@
 		6D92F1622482CDAE00C23EB8 /* RSS Reader */ = {
 			isa = PBXGroup;
 			children = (
+				6D92F18E248456FD00C23EB8 /* helpers */,
 				6D92F17D2482D54800C23EB8 /* viewControllers */,
 				6D92F17C2482D53400C23EB8 /* model */,
 				6D92F1632482CDAE00C23EB8 /* AppDelegate.h */,
@@ -115,6 +119,15 @@
 				6D92F18624830DBA00C23EB8 /* NewsDetailsViewController.m */,
 			);
 			path = viewControllers;
+			sourceTree = "<group>";
+		};
+		6D92F18E248456FD00C23EB8 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6D92F18F2484572D00C23EB8 /* HostAndNewsCell.h */,
+				6D92F1902484572D00C23EB8 /* HostAndNewsCell.m */,
+			);
+			path = helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +208,7 @@
 				6D92F18D2483C8DB00C23EB8 /* RSSEntry.m in Sources */,
 				6D92F1682482CDAE00C23EB8 /* SceneDelegate.m in Sources */,
 				6D92F18724830DBA00C23EB8 /* NewsDetailsViewController.m in Sources */,
+				6D92F1912484572D00C23EB8 /* HostAndNewsCell.m in Sources */,
 				6D92F18A2483BEA300C23EB8 /* Host.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -34,6 +34,8 @@
     [parser setDelegate:self];
     [parser setShouldResolveExternalEntities:NO];
     [parser parse];
+    [self.rssFeed setDataSource:self];
+    [self.rssFeed setDelegate:self];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -53,13 +55,10 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell" forIndexPath:indexPath];
-//    if (cell.textLabel.tag == 0) {
-        cell.textLabel.text = [[news objectAtIndex:indexPath.row] objectForKey:@"title"];
-//    }
-//    if (cell.textLabel.tag == 1) {
-//        cell.textLabel.text = [[news objectAtIndex:indexPath.row] objectForKey:@"description"];
-//    }
+    HostAndNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newsCell" forIndexPath:indexPath];
+        
+    cell.newsTitle.text = [[news objectAtIndex:indexPath.row] objectForKey:@"title"];
+    cell.newsDescription.text = [[news objectAtIndex:indexPath.row] objectForKey:@"description"];
         
     return cell;
 }
@@ -67,7 +66,7 @@
 -(void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary<NSString *,NSString *> *)attributeDict {
     
     element = elementName;
-    if ([elementName isEqualToString:@"item"]) {
+    if ([element isEqualToString:@"item"]) {
         newsItem = [[NSMutableDictionary alloc] init];
         newsTitle = [[NSMutableString alloc] init];
         newsLink = [[NSMutableString alloc] init];

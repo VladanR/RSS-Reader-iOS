@@ -15,33 +15,52 @@
 @implementation MainViewController
 
 NSUserDefaults *userDef;
-Host *host;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    userDef = [NSUserDefaults standardUserDefaults];
-    NSData *hostData = [userDef objectForKey:@"host"];
-    host = [NSKeyedUnarchiver unarchivedObjectOfClass:Host.class fromData:hostData error:nil];
+
     hosts = [NSMutableArray array];
-    if (host) {
-        [hosts addObject:host];
+    if (_host) {
+        [hosts addObject:_host];
     }
     
     if (hosts != nil && hosts.count > 0) {
         [_hostTable setHidden:NO];
     }
+    [self.hostTable setDelegate:self];
+    [self.hostTable setDataSource:self];
+    [self.hostTable reloadData];
     // Do any additional setup after loading the view.
 }
 
 
 - (IBAction)goToFeeds:(id)sender {
+    [self performSegueWithIdentifier:@"toFeed" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"toFeed"]) {
+        NewsListTableViewController * newsVC = segue.destinationViewController;
+        // This is how you will pass the object or data you want for the next view
+        newsVC.newsHost = self.host;
+    }
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section { 
     return hosts.count;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    HostAndNewsCell *cell = [tableView dequeueReusableCellWithIdentifier:@"hostCell" forIndexPath:indexPath];
+    cell.titleLabel.text = [[hosts objectAtIndex:indexPath.row] hostName];
+    cell.descriptionLabel.text = [[hosts objectAtIndex:indexPath.row] dateAdded];
+    return cell;
+}
 
 
 

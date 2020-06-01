@@ -3,6 +3,28 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "-[MainViewController tableView:cellForRowAtIndexPath:]:MainViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[hosts objectAtIndex:indexPath.row];">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[NewsListTableViewController tableView:cellForRowAtIndexPath:]:NewsListTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[news objectAtIndex:indexPath.row] objectForKey:@&quot;item&quot;];">
+            </PersistentString>
+            <PersistentString
+               value = "cell.newsTitle.text">
+            </PersistentString>
+            <PersistentString
+               value = " [[news objectAtIndex:indexPath.row] objectForKey:@&quot;title&quot;];">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[MainViewController viewDidLoad]:MainViewController.m">
       </ContextState>
       <ContextState
@@ -11,7 +33,13 @@
             <PersistentString
                value = "[self checkTextfields];">
             </PersistentString>
+            <PersistentString
+               value = "[hosts objectAtIndex:indexPath.row] ">
+            </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[NewsListTableViewController viewDidLoad]:NewsListTableViewController.m">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

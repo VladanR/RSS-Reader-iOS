@@ -7,7 +7,7 @@
 //
 
 #import "AddHostsViewController.h"
-#import "NewsListTableViewController.h"
+#import "MainViewController.h"
 
 @interface AddHostsViewController ()
 
@@ -51,17 +51,17 @@
         [userDefaults setObject:hostData forKey:@"host"];
         [userDefaults synchronize];
     }
-    [self performSegueWithIdentifier:@"goToFeed" sender:self];
+    [self performSegueWithIdentifier:@"toHostList" sender:self];
 //    NewsListTableViewController *newsViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"newsFeed"];
 //    [self.navigationController pushViewController:newsViewController animated:NO];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-    if ([segue.identifier isEqualToString:@"goToFeed"]) {
-        NewsListTableViewController * newsVC = segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"toHostList"]) {
+        MainViewController * mainVC = segue.destinationViewController;
         // This is how you will pass the object or data you want for the next view
-        newsVC.newsHost = host;
+        mainVC.host = host;
     }
 
 }

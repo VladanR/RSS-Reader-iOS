@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Host.h"
+#import "HostAndNewsCell.h"
+
 @interface NewsListTableViewController : UITableViewController <UITableViewDataSource,UITableViewDelegate, NSXMLParserDelegate>
 
 @property(nonatomic, strong) Host *newsHost;
