@@ -61,6 +61,7 @@
     if ([segue.identifier isEqualToString:@"toHostList"]) {
         MainViewController * mainVC = segue.destinationViewController;
         // This is how you will pass the object or data you want for the next view
+        [self addAndSaveHosts:host];
         mainVC.host = host;
     }
 
@@ -86,5 +87,14 @@
     }
 }
 
+-(void)addAndSaveHosts:(Host *) host {
+    NSMutableArray *hosts = [[NSMutableArray alloc] init];
+    NSUserDefaults *userDef = [NSUserDefaults standardUserDefaults];
+    [hosts addObject:host];
+    NSData *hostsData = [NSKeyedArchiver archivedDataWithRootObject:hosts requiringSecureCoding:NO error:nil];
+    [userDef setObject:hostsData forKey:@"hostsAdded"];
+    [userDef synchronize];
+    
+}
 
 @end

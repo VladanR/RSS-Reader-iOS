@@ -79,13 +79,13 @@
 		6D92F1622482CDAE00C23EB8 /* RSS Reader */ = {
 			isa = PBXGroup;
 			children = (
-				6D92F18E248456FD00C23EB8 /* helpers */,
-				6D92F17D2482D54800C23EB8 /* viewControllers */,
-				6D92F17C2482D53400C23EB8 /* model */,
 				6D92F1632482CDAE00C23EB8 /* AppDelegate.h */,
 				6D92F1642482CDAE00C23EB8 /* AppDelegate.m */,
 				6D92F1662482CDAE00C23EB8 /* SceneDelegate.h */,
 				6D92F1672482CDAE00C23EB8 /* SceneDelegate.m */,
+				6D92F18E248456FD00C23EB8 /* helpers */,
+				6D92F17D2482D54800C23EB8 /* viewControllers */,
+				6D92F17C2482D53400C23EB8 /* model */,
 				6D92F16C2482CDAE00C23EB8 /* Main.storyboard */,
 				6D92F16F2482CDB000C23EB8 /* Assets.xcassets */,
 				6D92F1712482CDB000C23EB8 /* LaunchScreen.storyboard */,

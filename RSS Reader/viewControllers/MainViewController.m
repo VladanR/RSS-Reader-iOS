@@ -18,10 +18,18 @@ NSUserDefaults *userDef;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    self.hostTable.allowsMultipleSelectionDuringEditing = NO;
+    userDef = [NSUserDefaults standardUserDefaults];
+    NSData *savedHosts = [userDef objectForKey:@"hostsAdded"];
     hosts = [NSMutableArray array];
+
+    if (savedHosts && hosts == nil) {
+        hosts = [self getSavedHosts];
+    }
+//    } else {
+//    }
     if (_host) {
-        [hosts addObject:_host];
+        [self addAndSaveHosts:_host];
     }
     
     if (hosts != nil && hosts.count > 0) {
@@ -62,7 +70,34 @@ NSUserDefaults *userDef;
     return cell;
 }
 
+-(void)addAndSaveHosts:(Host *) host {
+    
+    [hosts addObject:host];
+    NSData *hostsData = [NSKeyedArchiver archivedDataWithRootObject:hosts requiringSecureCoding:NO error:nil];
+    [userDef setObject:hostsData forKey:@"hostsAdded"];
+    [userDef synchronize];
+    
+}
 
+-(NSMutableArray *)getSavedHosts {
+    
+    NSData *savedHosts = [userDef objectForKey:@"hostsAdded"];
+    NSMutableArray *hostsFromData = [NSKeyedUnarchiver unarchivedObjectOfClass:NSMutableArray.class fromData:savedHosts error:nil];
+    return hostsFromData;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [hosts removeObjectAtIndex:indexPath.row];
+        [tableView reloadData];
+    }
+}
 
 
 @end
