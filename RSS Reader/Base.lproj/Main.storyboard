@@ -260,6 +260,10 @@
                         <viewLayoutGuide key="safeArea" id="FlD-hp-g9s"/>
                     </view>
                     <navigationItem key="navigationItem" id="QTe-OE-Hyw"/>
+                    <connections>
+                        <outlet property="newsDescription" destination="GXV-qu-Whb" id="iSx-k8-bZI"/>
+                        <outlet property="newsLink" destination="3aY-dL-PfV" id="JG8-wK-mws"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="koG-d8-fyo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -292,7 +296,8 @@
                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="heavy"/>
                                             </state>
                                             <connections>
-                                                <segue destination="n3B-M3-mL5" kind="show" id="0PX-sw-GgZ"/>
+                                                <action selector="goToDetails:" destination="TmD-Oz-sef" eventType="touchUpInside" id="L7P-fi-OlC"/>
+                                                <segue destination="n3B-M3-mL5" kind="show" identifier="goToDetails" id="0PX-sw-GgZ"/>
                                             </connections>
                                         </button>
                                         <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nKf-M5-ch4">

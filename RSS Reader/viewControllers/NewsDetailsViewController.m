@@ -16,7 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.newsLink.text = self.newsEntry.articleUrl;
+    self.newsDescription.text = self.newsEntry.articleDescription;
 }
 
 /*

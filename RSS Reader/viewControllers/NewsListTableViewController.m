@@ -96,7 +96,23 @@
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
 
+    [_newsEntry setArticleTitle:[newsItem objectForKey:@"title"]];
+    [_newsEntry setArticleUrl:[newsItem objectForKey:@"link"]];
+    [_newsEntry setArticleDescription:[newsItem objectForKey:@"description"]];
+    [_newsEntry setArticleDate:[newsItem objectForKey:@"pubDate"]];
     [self.rssFeed reloadData];
 }
+
+- (IBAction)goToDetails:(id)sender {
+    [self performSegueWithIdentifier:@"goToDetails" sender:self];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"goToDetails"]) {
+        NewsDetailsViewController *detailsViewController = segue.destinationViewController;
+        detailsViewController.newsEntry = _newsEntry;
+    }
+}
+
 
 @end

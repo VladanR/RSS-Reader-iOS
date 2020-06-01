@@ -18,8 +18,8 @@
 		6D92F184248306BA00C23EB8 /* NewsListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92F183248306BA00C23EB8 /* NewsListTableViewController.m */; };
 		6D92F18724830DBA00C23EB8 /* NewsDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92F18624830DBA00C23EB8 /* NewsDetailsViewController.m */; };
 		6D92F18A2483BEA300C23EB8 /* Host.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92F1892483BEA300C23EB8 /* Host.m */; };
-		6D92F18D2483C8DB00C23EB8 /* RSSEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92F18C2483C8DB00C23EB8 /* RSSEntry.m */; };
 		6D92F1912484572D00C23EB8 /* HostAndNewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92F1902484572D00C23EB8 /* HostAndNewsCell.m */; };
+		6D92F194248516E200C23EB8 /* RSSEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D92F192248516E100C23EB8 /* RSSEntry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,10 +43,10 @@
 		6D92F18624830DBA00C23EB8 /* NewsDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewsDetailsViewController.m; sourceTree = "<group>"; };
 		6D92F1882483BEA300C23EB8 /* Host.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Host.h; sourceTree = "<group>"; };
 		6D92F1892483BEA300C23EB8 /* Host.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Host.m; sourceTree = "<group>"; };
-		6D92F18B2483C8DB00C23EB8 /* RSSEntry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RSSEntry.h; sourceTree = "<group>"; };
-		6D92F18C2483C8DB00C23EB8 /* RSSEntry.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSEntry.m; sourceTree = "<group>"; };
 		6D92F18F2484572D00C23EB8 /* HostAndNewsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HostAndNewsCell.h; sourceTree = "<group>"; };
 		6D92F1902484572D00C23EB8 /* HostAndNewsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HostAndNewsCell.m; sourceTree = "<group>"; };
+		6D92F192248516E100C23EB8 /* RSSEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSEntry.m; sourceTree = "<group>"; };
+		6D92F193248516E100C23EB8 /* RSSEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSEntry.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,10 +98,10 @@
 		6D92F17C2482D53400C23EB8 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				6D92F193248516E100C23EB8 /* RSSEntry.h */,
+				6D92F192248516E100C23EB8 /* RSSEntry.m */,
 				6D92F1882483BEA300C23EB8 /* Host.h */,
 				6D92F1892483BEA300C23EB8 /* Host.m */,
-				6D92F18B2483C8DB00C23EB8 /* RSSEntry.h */,
-				6D92F18C2483C8DB00C23EB8 /* RSSEntry.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -205,11 +205,11 @@
 				6D92F1652482CDAE00C23EB8 /* AppDelegate.m in Sources */,
 				6D92F1762482CDB000C23EB8 /* main.m in Sources */,
 				6D92F184248306BA00C23EB8 /* NewsListTableViewController.m in Sources */,
-				6D92F18D2483C8DB00C23EB8 /* RSSEntry.m in Sources */,
 				6D92F1682482CDAE00C23EB8 /* SceneDelegate.m in Sources */,
 				6D92F18724830DBA00C23EB8 /* NewsDetailsViewController.m in Sources */,
 				6D92F1912484572D00C23EB8 /* HostAndNewsCell.m in Sources */,
 				6D92F18A2483BEA300C23EB8 /* Host.m in Sources */,
+				6D92F194248516E200C23EB8 /* RSSEntry.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

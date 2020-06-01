@@ -14,14 +14,19 @@
 @synthesize articleTitle = _articleTitle;
 @synthesize articleUrl = _articleUrl;
 @synthesize articleDate = _articleDate;
+@synthesize articleDescription = _articleDescription;
+@synthesize fullArticle = _fullArticle;
 
-- (id)initWithHostTitle:(NSString*)hostTitle articleTitle:(NSString*)articleTitle articleUrl:(NSString*)articleUrl articleDate:(NSDate*)articleDate
+- (id)initWithHostTitle:(NSString*)hostTitle articleTitle:(NSString*)articleTitle articleUrl:(NSString*)articleUrl articleDate:(NSDate*)articleDate articleDescription:(NSString *)articleDescription andFullArticle:(NSString *)fullArticle
 {
     if ((self = [super init])) {
         _hostTitle = [hostTitle copy];
         _articleTitle = [articleTitle copy];
         _articleUrl = [articleUrl copy];
         _articleDate = [articleDate copy];
+        _articleDescription = [articleDescription copy];
+        _fullArticle = [fullArticle copy];
+
     }
     return self;
 }
